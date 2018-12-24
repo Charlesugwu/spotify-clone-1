@@ -1,93 +1,81 @@
-Spotify Clone
+  after users register, will they be asked to confirm email address before logging in for the first time.
+    - could put a message page stating "please check email for account confirmation."
+    - or 
+    - since register will automatically take user to login when complete, add message to login screen.
+        - but will need to block them from signing in until email is confirmed.
+        - then also have email link take user back to login page.
 
-Create form
-  login
-  all fields required
-  register
-  all fields required
-  name it register.php
-  
-Test
-  if (isset($_POST['loginButton'])) {
-    // if the login button was pressed
-    echo 'login button was pressed';
+PHP AND JS
+
+function Audio(params) {
+
+  this.currentlyPlaying;
+  this.audio = document.createElement('audio');
+
+  this.setTrack = function(src) {
+    this.audio.src = src;
   }
-  if (isset($_POST['registerButton'])) {
-    echo 'register button was pressed';
-  }
+}
 
-Sanitize input
-  $ = _POST['$'];
-  strip tags strip_tags($);
-  replace tags str_replace("replace this", "with this", "for $");
-    duplicate with other input, but include 
-      ucfirstname(strtolower($));
-  Create a function for all the user inputs
-    function sanitizeFormUsername($inputText) {}
-    function sanitizeFormString($inputText) {}
-    function sanitizeFormPassword(inputText) {}
-  Remember to call function
-    hint- you want to compile information after register button is pressed
-      $ = functionName(_POST['$']);
-      there should be 3 functions and 7 function calls
-  Separate sanitize functions
-    copy functions and calls into "/includes/handlers" file
-    name it register-handler.php
+To create a 'class' in js you use a function.
 
-Validate input
-  Create function to validate inpute
-    functionName($un){} 
-      there should be 5
-    hint- Some may have 2 parameters
-  Call functions (beneath other calls)
-    there should be 5
+Property = this.audio = document.createElement('audio'); is the same as creating private variarables in a php class.
+*the 'audio' comes from the audio object that was created. JS has an 'Audio' Object with Methods including play().
 
-Create class
-  folder /includes/handlers/classes
-  Account.php (classes are always uppercase)
-  Create constructor
-    public function __construct() {
-      //copy all 'validate' functions from register.php file and make them private - this is best practices 
-      // this information can only be called from inside of that class
-    }
-  Create public function __register() {
-    //copy all 'validate' calls from register.php 
-  }
-  
-Link funtions
-  At this point register.php knows nothing about Account() or register()
-    add $account = new Account();
-    add $account->register();
-    test by refreshing the web page, errors should show up because the variables are still undefined
+The 'setTrack' is to get the song. Maybe better named 'callTrack'.
+let the audio(this) or this function 
 
-Defining variables
-  Account.php file add parameters to public function register()
-    hint - use shorthand variable names
-  Take the $account->register function and move it to the register-handler.php file
-    add it to the sanitize ifstatement with the other calls
-  The $account->register function goes at the bottom of the register-handler.php file because it needs to go after the $account = new Account() - it will be included with the include()
-  Add parameters to function - use variables from ifstatement above - do not shorten
+Add script page to header.php
+To execute:
+<script>
+  var audioElement = new Audio();
+  aduioElement.setTrack("assets/music/bensound-slowmotion.mp3");
+  audioElement.audio.play()
+</script>
 
-Error array
-  Create private $errorArray (basically create variable at top of page)
-  Add $this->$errorArray = array(); to public function__construct 
+Create a new instance of Audio object. new Audio();
 
-Error msgs
-  Add if statements to private functions that states username must be between 5 to 25 characters if not push error into $this->errorArray and return to stop function 
-  Validateusername - length
-  Validatefirstname - length
-  Validatelastname - length 
-  Validateemails - 2 (length, validate email)
-  Validatepassword - 3 checks (match, alphanumeric characters,length)
+audioElelemt.setTrack =
+new audio instance.setTrack(src);
+*once you create a new instance you don't have to refer to "this" any more? You will be borrowing the elements inside.
 
-Error validation
-  In register-handler.php file add parameters to $account->register - variables from registerButton if statment above
-  Make $account->register into a variable called $wasSuccessful
-  Add ifstatement redirecting to index.php
+audioElement.audio.play();
+new audio instance.play the audio()
+*you need to refer to the variable "this.audio" that was created inside the audio object, because that's the one you want to run.
 
-Check validation
-  Create function to check errors
-  Add function to register.php page to check for specific errors
-    <?php echo $account->getError(") >
+refer to:
+https://www.w3schools.com/jsref/dom_obj_audio.asp for info on Audio Object Methods and Properties
+ 
+UNDERSTANDING QUERIRES
 
+<?php
+$songQuery = mysqli_query($con, "SELECT id FROM song ORDER BY RAND() LIMIT 10");
+
+$resultArray = array();
+
+while($row = mysqli_fetch_array($songQuery)) {
+  array_push($resultArray, $row['id']);
+}
+?>
+
+translated: $songQuery = query to mysqli databse( $con is the route to the base, "select the 'id' row from the 'song' table. order by random. limit 10 songs);
+
+Create and empty array to add songs to. call it $resultArray;
+
+While(the app is querying the database and fetching the information using the $songQuery equation, assign it the variable $row.) {
+  push songs into an array -
+  the params are (push where?, what?)
+}push(into empty array $resultArray, the songs that were 'fetched' and changed to the variable $row)
+
+*** after this is done, you'll need to convert the gathered php information into javascript. It must be converted into json so the js can read it. While still in php use:
+
+$jsonArray = json_encode($resultArray);
+
+then in js:
+
+<script>
+  console.log( <?php echo $jsonArray; ?> );
+</script>
+
+UNDERSTANDING JAVA SCRIPT AND EXECUTION
 

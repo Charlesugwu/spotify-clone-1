@@ -1,24 +1,23 @@
-<?php 
-include('includes/config.php');
-// session_destroy();
+<?php include('includes/header.php'); ?>
 
-if(isset($_SESSION['userLoggedIn'])) {
-  $userLoggedIn = $_SESSION['userLoggedIn'];  
-} else {
-  header("Location: register.php");
-}
+<h1 class="pageHeadingBig">You Might Also Like</h1>
+<div class="gridViewContainer">
+  <?php
+  $albumQuery = mysqli_query($con, "SELECT * FROM album ORDER BY RAND() LIMIT 10");
+  while($row = mysqli_fetch_array($albumQuery)) {
+    echo "<div class='gridViewItem'>
+    <a href='album.php?id=" . $row['id'] . "'>
+    <img src='" . $row['artworkPath'] . "'>
+    <div class='gridViewInfo'>"
+      . $row['title'] .
+    
+    "</div>
+    </a>
+    </div>";
 
-?>
+  }
+  ?>
+</div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  hello!!
-</body>
-</html>
+
+<?php include('includes/footer.php'); ?>

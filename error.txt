@@ -1,0 +1,12 @@
+THINGS TO FIX
+
+1. when refreshing the page, you can see the "alt" text for the buttons on the player. May have to go back to stying to fix.
+
+QUESTIONS
+
+after users register, will they be asked to confirm email address before logging in for the first time.
+  - could put a message page stating "please check email for account confirmation."
+  - or 
+  - since register will automatically take user to login when complete, add message to login screen.
+      - but will need to block them from signing in until email is confirmed.
+      - then also have email link take user back to login page.
