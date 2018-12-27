@@ -4,7 +4,7 @@
       </div>
     </div>
     <!-- FOOTER NOW PLAYING BAR -->
-   <?php include('includes/nowPlayingBar.php'); ?>
+   <?php include('nowPlayingBar.php'); ?>
   </div>
 
 </body>
