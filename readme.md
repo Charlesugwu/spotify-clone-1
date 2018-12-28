@@ -1,9 +1,16 @@
-  after users register, will they be asked to confirm email address before logging in for the first time.
+  Corrections
+
+  after users register, will they be asked to confirm email address before logging in for the first time?
     - could put a message page stating "please check email for account confirmation."
     - or 
     - since register will automatically take user to login when complete, add message to login screen.
         - but will need to block them from signing in until email is confirmed.
         - then also have email link take user back to login page.
+  on reload, ALT text is showing.
+  
+    
+
+
 
 PHP AND JS
 

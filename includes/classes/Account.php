@@ -10,9 +10,9 @@ class Account
         $this->con = $con;
         $this->errorArray = array();
     }
-    public function login($run, $rpw) {
-        $rpw = md5($rpw);
-        $loginQuery = mysqli_query($this->con, "SELECT * FROM users WHERE username = '$run' AND password = '$rpw'");
+    public function login($un, $pw) {
+        $pw = md5($pw);
+        $loginQuery = mysqli_query($this->con, "SELECT * FROM users WHERE username = '$un' AND password = '$pw'");
 
         if(mysqli_num_rows($loginQuery) == 1) {
             return true;

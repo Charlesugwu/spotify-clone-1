@@ -1,21 +1,21 @@
 
 <div id="navBarContainer">
         <nav class="navBar">
-          <a href="index.php" class="logo">
+          <span role="link" tabindex="0" onclick="openPage('index.php')" class="logo">
             <img src="assets/icons/icons8-owl_filled.png" alt="">
-          </a>
+          </span>
         
           <div class="group">
             <div class="navItem">
-              <a href="search.php" class="navItemLink">Search <img src="assets/icons/icons8-search.png" class="icon" alt="Search"></a>
+            <span role="link" tabindex="0" onclick="openPage('search.php')" class="navItemLink">Search<img src="assets/icons/icons8-search.png" class="icon" alt="Search"></span>
             </div>
           </div>
           <div class="group"><div class="navItem">
-              <a href="browse.php" class="navItemLink">Browse</a>
+          <span role="link" tabindex="0" onclick="openPage('browse.php')"  class="navItemLink">Browse</span>
             </div><div class="navItem">
-              <a href="playlist.php" class="navItemLink">Playlist</a>
+            <span role="link" tabindex="0" onclick="openPage('playlist.php')"  class="navItemLink">Playlist</span>
             </div><div class="navItem">
-              <a href="profile.php" class="navItemLink">Profile</a>
+            <span role="link" tabindex="0" onclick="openPage('profile.php')"  class="navItemLink">Profile</span>
             </div>
           </div>
         </nav>

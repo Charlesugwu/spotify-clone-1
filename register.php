@@ -32,13 +32,13 @@
         <h2>Login to your account</h2>
         <p>   
         <?php echo $account->getError(Constants::$loginFailed); ?>  
-          <label for="registerUserName">Username</label>
-          <input type="text" id="registerUserName" name="registerUserName" 
-          value="<?php getValueInput('registerUserName') ?>"placeholder="e.g. bartSimpson" required></p>
+          <label for="loginUserName">Username</label>
+          <input type="text" id="loginUserName" name="loginUserName" 
+          value="<?php getValueInput('loginUserName') ?>"placeholder="e.g. bartSimpson" required></p>
         
         <p>
-          <label for="registerPassword">Password</label>
-          <input type="password" id="registerPassword" name="registerPassword" placeholder="Your password" required>
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="loginPassword" placeholder="Your password" required>
         </p>
 
         <button type="submit" name="loginButton">Login</button> 
